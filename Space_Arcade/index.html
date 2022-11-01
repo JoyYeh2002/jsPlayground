@@ -1,11 +1,29 @@
 <html>
-    <head>
-        <title>Asteroids Game</title>
-        <script src='index.js'></script>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <canvas id="canvas" width="800" height="800"></canvas>
-    </body>
-</html>
 
+<head>
+    <title>Asteroids Game</title>
+
+    <script src='gui.js'></script>
+    <script src='index.js'></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <canvas id="canvas" style="display:none"></canvas>
+    <div id="load" class="screen" style="display:block">
+        Flying to space, please wait...
+    </div>
+
+    <div id="start" class="screen" style="display:none">
+        <img src="assets/Asteroid_Start.png" />
+        <button click=""> Let's Play</button>
+    </div>
+
+    <div id="end" class="screen" style="display:none">
+        <img src="assets/Asteroid_End.png" />
+        <button click=""> Let's Play</button>
+    </div>
+</body>
+
+
+</html>

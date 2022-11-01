@@ -27,7 +27,7 @@ button {
 button {   transition-duration: 0.4s; }
 button:hover {
     font-size:1.6em;
-    background-color:#05c46b;
+    background-color:#c42b7f;
 }
 .screen {
     padding: 20px;     
