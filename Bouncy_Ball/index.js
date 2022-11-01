@@ -14,7 +14,7 @@ gameloop.update = function() {
 }
 
 gameloop.render = function() {
-    gameloop.ctx.fillStyle = '#1bafdb';         
+    gameloop.ctx.fillStyle = '#db9e1b';         
     gameloop.ctx.fillRect(0,0, gameloop.cnv.width, gameloop.cnv.height);
     ball.render(gameloop.ctx);
 }
