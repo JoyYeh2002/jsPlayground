@@ -8,14 +8,14 @@
 - Not modularized. Creating OOP classes soon!
 
 **Set variables**
-```
+```JS
 let loop;
 let fps = 60;
 let cnv, ctx;
 ```
 
 **Ball object implementation**
-```
+```JS
 let ball = {
     xpos : 0,
     ypos : 0,
@@ -58,7 +58,7 @@ let ball = {
 ```
 
 **Set up the game loop**
-```
+```JS
 window.onload = function() {
     console.log('gameloop');
     prepareCanvas();
@@ -75,7 +75,7 @@ window.onload = function() {
 ```
 
 **Canvas settings**
-```
+```JS
 function fillCanvas() {
     ctx.fillStyle = '#1bafdb';
     ctx.fillRect(0, 0, cnv.width, cnv.height);
@@ -93,7 +93,7 @@ function prepareCanvas() {
 ```
 
 **Updates the ctx properties for the ball**
-```
+```JS
 // Pass in different cnv states at 60 FPS
 function update() {
     ball.update(cnv);
