@@ -1,5 +1,4 @@
 class AsteroidService {
-
     constructor(player, particles) {
         this.collection = [];
         this.player = player;
@@ -8,6 +7,7 @@ class AsteroidService {
 
     init(total) {
         this.collection = [];
+        // Make a lot of asteroids
         for ( let i = 0; i < total; i++ ) {
             let asteroid = new Asteroid(1);
             asteroid.init();
@@ -16,6 +16,7 @@ class AsteroidService {
     }
 
     update() {
+        // Check for all asteroids in loop
         this.collection.forEach(a => {
             a.update();
             a.checkForCollisionsWithPhasers(this.player.projectileService.collection, this.particles, this);
@@ -62,8 +63,11 @@ class Asteroid {
         this.boom = window.gui.getResource("boom-audio");
         this.x = 0 - this.img.width/2;
         this.y = 0 - this.img.height/2;
+
+        // Random angle and speed
         this.angle = Math.random()*Math.PI*2.0;
-        this.speed = Math.random()*Math.PI*0.5;
+        this.speed = Math.random()*Math.PI*0.3;
+
         this.rotation = 0;
         this.turnrate = Math.random()*(0.04 - -0.04) + -0.04;
         this.active = true;
@@ -71,10 +75,14 @@ class Asteroid {
 
     update() {
         if ( this.active ) {
+            // Move asteroids around
             this.x += Math.cos(this.angle)*this.speed;
             this.y += Math.sin(this.angle)*this.speed;
+
+            // Spin the asteroid
             this.rotation += this.turnrate;
 
+            // Same thing for players. The asteroids wrap around.
             if ( this.x > this.fx.cnv.width ) {
                 this.x = 0 - this.img.width/2;
             }
@@ -90,6 +98,7 @@ class Asteroid {
         }
     }
 
+    // Draw the asteroid
     render() {
         if ( this.active ) {
             this.fx.rotateAndDrawImage(this.img, this.x,this.y, this.rotation);
@@ -103,6 +112,7 @@ class Asteroid {
         this.boom.play();
     }
 
+    // Destroy the asteroids.
     hasCollidedWithEntity(entity) {
 
         if ( !this.active || !entity.active ) { return false; }

@@ -45,7 +45,7 @@ class Projectile {
     constructor(owner) {
         this.owner = owner;
         this.angle = this.owner.angle;
-        this.speed = 15;
+        this.speed = 10;
         this.x = 0;
         this.y = 0;
         this.size = 3;

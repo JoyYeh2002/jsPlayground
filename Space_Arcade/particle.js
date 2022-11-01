@@ -72,7 +72,7 @@ class Particle {
 
     activate() {
         this.angle = Math.random()*Math.PI*2.0;
-        this.speed = Math.random()*15;
+        this.speed = Math.random()*10;
         this.alive = this.lifeSpan;
         this.x = this.owner.x + this.owner.img.width/2;
         this.y = this.owner.y + this.owner.img.height/2;

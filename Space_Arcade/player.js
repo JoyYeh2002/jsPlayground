@@ -3,6 +3,8 @@ class Player {
 
     constructor(particles) {
         this.fx = new Fx();
+
+        // Instantiate key handler
         this.keyHandler = new KeyHandler();
         this.projectileService = new ProjectileService(this);
         this.particles = particles;
@@ -62,10 +64,13 @@ class Player {
         }
 
         this.frames++;
+
+        // Update thrust
         this.rotation = 0;
         this.thrust.x = this.thrust.x * this.friction;
         this.thrust.y = this.thrust.y * this.friction;
 
+        // Rotate player out of the screen again from different directions
         if ( this.x > this.fx.cnv.width ) {
             this.x = 0 - this.img.width/2;
         }
@@ -79,16 +84,21 @@ class Player {
             this.y = this.fx.cnv.height;
         }
 
+        // Check key presses
         if ( this.keyHandler.keys.indexOf("ArrowUp") > -1 ) {
             this.thrust.x = this.acceleration * Math.cos(this.angle);
             this.thrust.y = this.acceleration * Math.sin(this.angle);
         }
+
+        // Turn sideways L or R
         if ( this.keyHandler.keys.indexOf("ArrowLeft") > -1 ) {
             this.rotation = -this.turnSpeed / 180 * Math.PI;
         }
         if ( this.keyHandler.keys.indexOf("ArrowRight") > -1 ) {
             this.rotation = this.turnSpeed / 180 * Math.PI;
         }
+
+        // If the space bar is pressed, use laser.
         if ( this.keyHandler.keys.indexOf(" ") > -1 ) {
             if ( this.frames > this.reload ) {
                 this.frames = 0;
