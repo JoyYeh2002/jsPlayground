@@ -1,5 +1,6 @@
 # Dino Game
 - Updated 11.01.2022
+- [Dino Game Source Code](https://github.com/Beat0154/easiest-game-ever)
 
 # Main Tasks
 - Collision detection (control statements)
