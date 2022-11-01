@@ -2,7 +2,9 @@
 
 <head>
     <title>Asteroids Game</title>
-
+    <script src='fx.js'></script>
+    <script src='gameloop.js'></script>
+    <script src='game.js'></script>
     <script src='gui.js'></script>
     <script src='index.js'></script>
     <link rel="stylesheet" href="index.css">
@@ -15,13 +17,13 @@
     </div>
 
     <div id="start" class="screen" style="display:none">
-        <img src="assets/Asteroid_Start.png" />
-        <button click=""> Let's Play</button>
+        <img src="assets/Asteroid_Start.png">
+        <button onclick="window.gui.startGame()"> Play</button>
     </div>
 
     <div id="end" class="screen" style="display:none">
-        <img src="assets/Asteroid_End.png" />
-        <button click=""> Let's Play</button>
+        <img src="assets/Asteroid_End.png">
+        <button onclick="window.gui.startGame()"> Play</button>
     </div>
 </body>
 
