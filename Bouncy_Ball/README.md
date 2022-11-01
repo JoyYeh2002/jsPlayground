@@ -7,14 +7,15 @@
 - Define the background, object collision, rendering, updating, and canvas ctx
 - Not modularized. Creating OOP classes soon!
 
-*Set the variables*
+**Set variables**
 ```
 let loop;
 let fps = 60;
 let cnv, ctx;
 ```
 
-
+**Ball object implementation**
+```
 let ball = {
     xpos : 0,
     ypos : 0,
@@ -54,8 +55,10 @@ let ball = {
         }
     }
 }
+```
 
-// Set up the game loop
+**Set up the game loop**
+```
 window.onload = function() {
     console.log('gameloop');
     prepareCanvas();
@@ -69,8 +72,10 @@ window.onload = function() {
         render();
     }, 1000/fps); // invoke 60 times per second
 }
+```
 
-// Helper: fills the canvas with color
+**Canvas settings**
+```
 function fillCanvas() {
     ctx.fillStyle = '#1bafdb';
     ctx.fillRect(0, 0, cnv.width, cnv.height);
@@ -85,8 +90,11 @@ function prepareCanvas() {
     cnv.width = window.innerWidth;
     cnv.height = window.innerHeight;
 }
+```
 
-// Updates the ctx properties for the ball
+**Updates the ctx properties for the ball**
+```
+// Pass in different cnv states at 60 FPS
 function update() {
     ball.update(cnv);
 }
@@ -96,4 +104,4 @@ function render() {
     fillCanvas();
     ball.draw(ctx);
 }
-
+```
