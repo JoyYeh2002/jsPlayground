@@ -32,13 +32,13 @@ class GameLoop {
 
     update() {
         if (this.game) {
-            this.game.update();
+          //  this.game.update();
         }
     }
     
     render() {
         if (this.game) {
-            this.game.render();
+         //   this.game.render();
         }
     }
 }
