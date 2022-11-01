@@ -1,13 +1,5 @@
-/* Updated: 11.01.2022
- * Created a gameloop class with:
- * constructors (position, velocity, appearange)
- * reset()
- * render()
- * update()
- * collision detection
- */
-
 class GameLoop {
+
     constructor() {
         this.fps = 60;
         this.ctx = null;
@@ -20,13 +12,11 @@ class GameLoop {
         this.ctx = this.cnv.getContext('2d');
         document.body.style.margin = 0;
         document.body.style.padding = 0;
-
-        // New: re-size wrt. window size
         this.onresize();
     }
 
     onresize() {
-        if (this.cnv) {
+        if ( this.cnv ) {
             this.cnv.width = window.innerWidth;
             this.cnv.height = window.innerHeight;
             this.resize();
@@ -34,17 +24,17 @@ class GameLoop {
     }
 
     start() {
-        this.toggleScreen('start-screen', false);
-        this.toggleScreen('canvas', true);
+        this.toggleScreen('start-screen',false);
+        this.toggleScreen('canvas',true);
         this.prepareCanvas();
         this.init();
-        this.loop = setInverval(() => {
+        this.loop = setInterval(() => {
             this.update();
             this.render();
         }, 1000/this.fps);
     }
 
-    toggleScreen(id, toggle) {
+    toggleScreen(id,toggle) {
         let element = document.getElementById(id);
         let display = ( toggle ) ? 'block' : 'none';
         element.style.display = display;
