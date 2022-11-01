@@ -42,7 +42,7 @@ class AsteroidService {
 }
 
 class Asteroid {
-
+    // There are large and small sized asteroids.
     constructor(size) {
         this.size = size;
         this.fx = new Fx();
@@ -127,11 +127,15 @@ class Asteroid {
 
     checkForCollisionsWithPhasers(phasers, particles, service) {
         if ( this.active ) {
+
+            // Break into smaller asteroids if hit
             phasers.forEach(p => {
                 if ( this.hasCollidedWithEntity(p) ) {
                     this.collisionDetected();
                     let nextSize = ++this.size;
                     let total = Math.random() * 4;
+
+                    // Spawn smaller asteroids.
                     if ( nextSize <= 3 ) {
                         service.spawn(nextSize,total,this);
                     }

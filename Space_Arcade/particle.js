@@ -25,6 +25,7 @@ class ParticleService {
         });
     }
 
+    // Call "activate()" to spawn
     spawn(total, owner) {
         for ( let i = 0; i < total; i++ ) {
             let particle = new Particle(owner);
@@ -55,6 +56,7 @@ class Particle {
         this.fx.init();
     }
 
+    // Remove particles if inactive
     update() {
         if ( this.active ) {
             this.x += Math.cos(this.angle) * this.speed;
