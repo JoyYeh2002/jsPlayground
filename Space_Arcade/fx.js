@@ -1,4 +1,6 @@
+
 class Fx {
+
     constructor() {
         this.cnv = null;
         this.ctx = null;
@@ -26,21 +28,12 @@ class Fx {
         this.ctx.fill();
     }
 
-    // Get the object, image coords, and angle
-    rotateAndDrawImage(image, atx, aty, angle) {
-        if (image && this.ctx) {
+    rotateAndDrawImage(image, atx,aty, angle) {
+        if ( image && this.ctx ) {
             this.ctx.save();
-
-            // Place object at the image
-            this.ctx.translate(atx + image.width / 2, aty + image.height / 2);
-            
-            // Rotate by the angle
+            this.ctx.translate(atx+image.width/2, aty+image.height/2);
             this.ctx.rotate(angle);
-
-            // Call drawImage()
-            this.ctx.drawImage(image, -image.width / 2, -image.height / 2);
-            
-            // Reset the context
+            this.ctx.drawImage(image, -image.width/2,-image.height/2);
             this.ctx.restore();
         }
     }

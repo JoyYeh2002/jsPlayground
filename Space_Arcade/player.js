@@ -1,13 +1,11 @@
+
 class Player {
 
     constructor(particles) {
         this.fx = new Fx();
-
-        /*
         this.keyHandler = new KeyHandler();
         this.projectileService = new ProjectileService(this);
         this.particles = particles;
-        */
         this.img = null;
         this.laserSound = null;
         this.boom = null;
@@ -15,16 +13,12 @@ class Player {
         this.turnSpeed = 5;
         this.acceleration = 5;
         this.friction = 0.99;
-        
 
-        // Physics variables
         this.x = 0;
         this.y = 0;
         this.thrust = { x:0, y:0 };
         this.angle = 0;
         this.rotation = 0;
-
-        /*
         this.reload = 10;
         this.frames = 0;
 
@@ -33,43 +27,30 @@ class Player {
         this.dead = 3;
         this.state = this.alive;
         this.dyingTime = 240;
-        */
     }
 
-    // Initialize a new playwer
     init() {
         this.fx.init();
-
-        /*
         this.projectileService.init();
         this.keyHandler.init();
-        */
-
-        // Set the resource properties
         this.img = window.gui.getResource("player-img");
         this.laserSound = window.gui.getResource("laser-audio");
         this.boom = window.gui.getResource("boom-audio");
 
-        // Place player at the center
         this.x = this.fx.cnv.width/2 - this.img.width/2;
         this.y = this.fx.cnv.height/2 - this.img.height/2;
-
-        // Zero the thrust object
-        this.thrust = { x: 0, y: 0 };
-        this.angle = 270 / 180 * Math.PI;
+        this.thrust = { x:0, y:0 };
+        this.angle = 270/180*Math.PI;
         this.rotation = 0;
         this.reload = 10;
         this.frames = 0;
 
-        /*
         this.state = this.alive;
         this.dyingTime = 240;
-        */
     }
 
     update() {
 
-        /* 
         if ( this.state == this.dead ) {
             window.gui.stopGame();
             return;
@@ -123,20 +104,15 @@ class Player {
         this.y += this.thrust.y;
 
         this.projectileService.update();
-
-        */
     }
 
     render() {
-       // this.projectileService.render();
-
-        // Only draw when alive
-       // if ( this.state == this.alive ) {
-            this.fx.rotateAndDrawImage(this.img, this.x, this.y, this.angle);
-      //  }
+        this.projectileService.render();
+        if ( this.state == this.alive ) {
+            this.fx.rotateAndDrawImage(this.img, this.x,this.y, this.angle);
+        }
     }
 
-    /*
     kill() {
         this.state = this.dying;
         this.particles.spawn(16,this);
@@ -144,5 +120,4 @@ class Player {
         this.boom.currentTime = 0;
         this.boom.play();
     }
-    */
 }

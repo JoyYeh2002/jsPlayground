@@ -1,9 +1,9 @@
+
 class GameLoop {
 
     constructor(game) {
-        this.fps = 60;
-        this.game = game;
         this.loop = null;
+        this.game = game;
     }
 
     start() {
@@ -11,7 +11,7 @@ class GameLoop {
         this.loop = setInterval(() => {
             this.update();
             this.render();
-        }, 1000 / this.fps);
+        }, 1000/60);
     }
 
     stop() {
@@ -19,26 +19,26 @@ class GameLoop {
     }
 
     init() {
-        if (this.game) {
+        if ( this.game ) {
             this.game.init();
         }
     }
 
     resize() {
-        if (this.game) {
+        if ( this.game ) {
             this.game.resize();
         }
     }
 
     update() {
-        if (this.game) {
-          //  this.game.update();
+        if ( this.game ) {
+            this.game.update();
         }
     }
-    
+
     render() {
-        if (this.game) {
-         //   this.game.render();
+        if ( this.game ) {
+            this.game.render();
         }
     }
 }

@@ -1,4 +1,5 @@
 class Gui {
+
     constructor(game) {
         this.cnv = null;
         this.ctx = null;
@@ -6,7 +7,6 @@ class Gui {
         this.resourcesToLoad = 0;
         this.gameloop = new GameLoop(game);
     }
-    
 
     resize() {
         if ( this.cnv ) {
@@ -16,8 +16,8 @@ class Gui {
     }
 
     prepareCanvas() {
-        this.cnv = document.getElementById('canvas');
-        this.ctx = this.cnv.getContext('2d');
+        this.cnv = document.getElementById("canvas");
+        this.ctx = this.cnv.getContext("2d");
         document.body.style.margin = 0;
         document.body.style.padding = 0;
         this.resize();
@@ -25,7 +25,7 @@ class Gui {
 
     toggleScreen(id, toggle) {
         let element = document.getElementById(id);
-        let display = ( toggle ) ? 'block' : 'none';
+        let display = ( toggle ) ? "block" : "none";
         element.style.display = display;
     }
 
@@ -33,7 +33,7 @@ class Gui {
         let elements = document.querySelectorAll(".screen");
         [...elements].forEach( e => {
             e.style.display = "none";
-        }); 
+        });
     }
 
     showScreen(id) {
@@ -43,39 +43,41 @@ class Gui {
 
     launchIfReady() {
         this.resourcesToLoad--;
-        if (this.resourcesToLoad == 0) {
+        if ( this.resourcesToLoad == 0 ) {
             this.prepareCanvas();
             this.showScreen("start");
         }
     }
-
     beginLoadingImage(imgVar, fileName) {
         imgVar.onload = () => this.launchIfReady();
         imgVar.src = fileName;
     }
-
     beginLoadingAudio(audioVar, fileName) {
         audioVar.src = fileName;
         audioVar.addEventListener("canplay", () => this.launchIfReady());
     }
 
     load(resources) {
-        if (!resources || resources.length == 0) {
+
+        if ( !resources || resources.length == 0 ) {
             this.prepareCanvas();
-            this.showsScreen("start");
+            this.showScreen("start");
             return;
         }
 
-        if (resources) {
+        if ( resources ) {
+
             this.resources = resources;
             this.resourcesToLoad = this.resources.length;
 
-            for (let i = 0; i < this.resources.length; i++) {
-                if (this.resources[i].var != undefined) {
-                    if (this.resources[i].var.nodeName == "IMG") {
+            for ( let i = 0; i < this.resources.length; i++ ) {
+
+                if ( this.resources[i].var != undefined ) {
+
+                    if ( this.resources[i].var.nodeName == "IMG" ) {
                         this.beginLoadingImage(
                             this.resources[i].var, 
-                            this.resources[i].file);
+                            this.resources[i].file); 
                     }
 
                     if (this.resources[i].var.nodeName == "AUDIO") {
@@ -87,6 +89,7 @@ class Gui {
             }
         }
     }
+
 
     getResource(id) {
         return this.resources.filter(r => r.id === id)[0].var;
