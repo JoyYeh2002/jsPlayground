@@ -7,6 +7,13 @@
 - Define the background, object collision, rendering, updating, and canvas ctx
 - Not modularized. Creating OOP classes soon!
 
+# Future Improments
+
+- Allow the user to control a plank for the ball to rebound on
+- Allow collisions with obstacles for more complicated logic
+- Change the styles
+- Add more objects that can collide with each other.
+
 **Set variables**
 ```JS
 let loop;
